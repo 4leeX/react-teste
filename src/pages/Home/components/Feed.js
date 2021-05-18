@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => {
 const posts = [
   {
     id: 1,
-    autor: {
+    author: {
       id: 1,
       name: "Lucas Nhimi",
       username: "lucasnhimi",
@@ -24,7 +24,7 @@ const posts = [
   },
   {
     id: 2,
-    autor: {
+    author: {
       id: 1,
       name: "Lucas Nhimi",
       username: "lucasnhimi",
@@ -35,7 +35,7 @@ const posts = [
     description:
       "Quero criar um bootcamp gratuito para passar um pouco da minha experiência para vcs! Quem topa?",
     hashtags: "#dotnet, #javascript, #reactjs, #developer",
-    image: "/images/posts/post8.jpeg",
+    image: "/images/posts/post8.png",
   },
 ];
 
