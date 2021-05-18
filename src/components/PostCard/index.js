@@ -80,7 +80,7 @@ function PostCard({ post }) {
             color="textSecondary"
             variant="body2"
           >
-            {post.likes}
+            {"10"}
           </Typography>
         </IconButton>
         <IconButton aria-label="comment">
@@ -90,8 +90,11 @@ function PostCard({ post }) {
             color="textSecondary"
             variant="body2"
           >
-            {post.comments}
+            {"10"}
           </Typography>
+        </IconButton>
+        <IconButton aria-label="favorite" className={classes.favorite}>
+          <ShareIcon />
         </IconButton>
       </CardActions>
     </Card>
