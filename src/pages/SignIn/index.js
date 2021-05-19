@@ -1,4 +1,5 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -21,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
     background: "purple",
     flexBasis: "42%",
   },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    margin: "65px 32px",
+    alignItems: "center",
+  },
 }));
 
 function SignIn() {
@@ -31,12 +38,33 @@ function SignIn() {
     <div className={classes.root}>
       {/* Flex item container */}
       <div className={classes.left}>
-        <h2>Título</h2>
-        <h4>SubTitulo</h4>
+        <Typography style={{ color: "#fff", fontSize: 25, lineHeight: "45px" }}>
+          <strong>
+            Simplificando a forma de conectar desenvolvedores de software!
+          </strong>
+        </Typography>
+        <Typography
+          variant="body2"
+          style={{
+            color: "rgb(255,255,255, 0.7)",
+            marginTop: 30,
+            fontSize: 15,
+            lineHeight: "30px",
+          }}
+        >
+          Compartilhe seu conhecimento com toda nossa rede de desenvolvedores de
+          software.
+        </Typography>
       </div>
 
       {/* Flex item */}
-      <div className={classes.right}>Form</div>
+      <div className={classes.right}>
+        <form className={classes.form}>
+          <h4>Acesso</h4>
+          <input type="text" />
+          <input type="text" />
+        </form>
+      </div>
     </div>
   );
 }
