@@ -8,6 +8,8 @@ import LockOutlined from "@material-ui/icons/LockOutlined";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,6 +50,20 @@ function Copyright() {
 
 function SignIn() {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  function handleSignIn() {
+    //chama a api
+    //se retorno ok, direciona para home,
+    //se não exibe mensagem para o usuário
+
+    axios
+      .get("https://api.github.com/users/4leeX")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => console.log("Ocorreu erro"));
+  }
 
   return (
     <Grid container className={classes.root}>
@@ -112,6 +128,7 @@ function SignIn() {
               variant="contained"
               color="primary"
               className={classes.button}
+              onClick={handleSignIn}
             >
               Entrar
             </Button>
