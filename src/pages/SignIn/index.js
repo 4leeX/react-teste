@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../utils/axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,17 +52,13 @@ function SignIn() {
   const classes = useStyles();
   const navigate = useNavigate();
 
-  function handleSignIn() {
+  async function handleSignIn() {
     //chama a api
     //se retorno ok, direciona para home,
     //se não exibe mensagem para o usuário
 
-    axios
-      .get("https://api.github.com/users/4leeX")
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((e) => console.log("Ocorreu erro"));
+    const response = await axios.post("/api/home/login");
+    console.log(response);
   }
 
   return (
