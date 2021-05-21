@@ -57,8 +57,14 @@ function SignIn() {
     //se retorno ok, direciona para home,
     //se não exibe mensagem para o usuário
 
-    const response = await axios.post("/api/home/login");
-    console.log(response);
+    try {
+      await axios.post("/api/home/login", {
+        email: "alexsandro@gmail.com",
+        password: "123456",
+      });
+    } catch (e) {
+      console.log(e.response);
+    }
   }
 
   return (
