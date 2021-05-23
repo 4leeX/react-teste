@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -9,7 +9,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import { useNavigate } from "react-router-dom";
-import axios from "../../utils/axios";
+
+import authService from "../../services/authService";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +52,8 @@ function Copyright() {
 function SignIn() {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   async function handleSignIn() {
     //chama a api
@@ -58,10 +61,9 @@ function SignIn() {
     //se não exibe mensagem para o usuário
 
     try {
-      await axios.post("/api/home/login", {
-        email: "alexsandro@gmail.com",
-        password: "123456",
-      });
+      await authService.singIn("alexsandro@gmail.com", "123456");
+      //200
+      navigate("/");
     } catch (e) {
       console.log(e.response);
     }
@@ -113,6 +115,8 @@ function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -124,6 +128,7 @@ function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
             />
             <Button
               fullWidth

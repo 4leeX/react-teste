@@ -9,7 +9,7 @@ import mock from "../utils/mock";
 mock.onPost("/api/home/login").reply((config) => {
   const { email, password } = JSON.parse(config.data);
 
-  if (email !== "alexsandro@gmail.com" || password !== "1234561") {
+  if (email !== "alexsandro@gmail.com" || password !== "123456") {
     return [400, { message: "Seu e-mail ou senha estão incorretos." }];
   }
 
