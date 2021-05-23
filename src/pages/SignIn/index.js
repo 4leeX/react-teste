@@ -9,6 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import { useNavigate } from "react-router-dom";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 import authService from "../../services/authService";
 
@@ -54,6 +55,7 @@ function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState();
 
   async function handleSignIn() {
     //chama a api
@@ -61,11 +63,11 @@ function SignIn() {
     //se não exibe mensagem para o usuário
 
     try {
-      await authService.singIn("alexsandro@gmail.com", "123456");
+      await authService.singIn(email, password);
       //200
       navigate("/");
     } catch (e) {
-      console.log(e.response);
+      setErrorMessage(e.response.data.message);
     }
   }
 
@@ -129,6 +131,7 @@ function SignIn() {
               id="password"
               autoComplete="current-password"
               value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Button
               fullWidth
@@ -139,6 +142,9 @@ function SignIn() {
             >
               Entrar
             </Button>
+            {errorMessage && (
+              <FormHelperText error>{errorMessage}</FormHelperText>
+            )}
             <Grid item>
               <Link>Esqueceu a sua senha?</Link> <Link>Não tem uma conta?</Link>
             </Grid>
