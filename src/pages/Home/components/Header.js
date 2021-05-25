@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -32,6 +31,7 @@ const useStyles = makeStyles({
 
 function Header() {
   const classes = useStyles();
+  const user = null;
 
   return (
     <AppBar position="fixed" color="inherit" className={classes.appBar}>
@@ -49,7 +49,7 @@ function Header() {
           <SvgIcon className={classes.bell}>
             <Bell />
           </SvgIcon>
-          <Avatar alt="Remy Sharp" src="" />
+          <Avatar alt="Remy Sharp" src={user && user.avatar} />
         </div>
         {/* <div>
           <a href="/">Conecta Dev - Alterado</a>

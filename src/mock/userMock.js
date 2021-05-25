@@ -18,6 +18,7 @@ mock.onPost("/api/home/login").reply((config) => {
     name: "Alexsandro Ricardo",
     username: "alexx",
     email: "alexsandro@gmail.com",
+    avatar: "/images/avatars/avatar_1.jpeg",
   };
 
   return [200, { user }];

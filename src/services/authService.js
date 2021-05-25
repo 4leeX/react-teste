@@ -7,7 +7,7 @@ class AuthService {
         .post("/api/home/login", { email, password })
         .then((response) => {
           if (response.data.user) {
-            this.setUser(response.data.user);
+            // this.setUser(response.data.user);
             resolve(response.data.user);
           } else {
             reject(response.data.user);
@@ -25,6 +25,9 @@ class AuthService {
 
   getUser = () => {
     const user = localStorage.getItem("user");
+    if (user) {
+      return JSON.parse(user);
+    }
     return user;
   };
 
