@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import { useNavigate } from "react-router-dom";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import authService from "../../services/authService";
 
@@ -57,9 +57,9 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState();
+  const dispatch = useDispatch();
 
   const account = useSelector((state) => state);
-  console.log(account);
 
   async function handleSignIn() {
     //chama a api
@@ -67,13 +67,26 @@ function SignIn() {
     //se não exibe mensagem para o usuário
 
     try {
-      await authService.singIn(email, password);
-      //200
-      navigate("/");
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: {
+          user: {
+            id: 1,
+            name: "Alexsandro Ricardo",
+            username: "alexx",
+            email: "alexsandro@gmail.com",
+            avatar: "/images/avatars/avatar_1.jpeg",
+          },
+        },
+      });
+      // await authService.singIn(email, password);
+      // navigate("/");
     } catch (e) {
       setErrorMessage(e.response.data.message);
     }
   }
+
+  console.log(account);
 
   return (
     <Grid container className={classes.root}>
