@@ -1,14 +1,12 @@
+import authService from "../services/authService";
+
 const signIn = (email, password) => {
-  return (dispatch) => {
+  return async (dispatch) => {
+    const user = await authService.signIn(email, password);
+
     dispatch({
       type: "LOGIN_SUCCESS",
-      payload: {
-        id: 1,
-        name: "Alexsandro Ricardo",
-        username: "alexx",
-        email: "alexsandro@gmail.com",
-        avatar: "/images/avatars/avatar_1.jpeg",
-      },
+      payload: { user },
     });
   };
 };

@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { useSelector, useDispatch } from "react-redux";
 
-import authService from "../../services/authService";
+import signIn from "../../actions/accountAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,22 +67,12 @@ function SignIn() {
     //se não exibe mensagem para o usuário
 
     try {
-      dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: {
-          user: {
-            id: 1,
-            name: "Alexsandro Ricardo",
-            username: "alexx",
-            email: "alexsandro@gmail.com",
-            avatar: "/images/avatars/avatar_1.jpeg",
-          },
-        },
-      });
+      await dispatch(signIn(email, password));
+
       // await authService.singIn(email, password);
       // navigate("/");
     } catch (e) {
-      setErrorMessage(e.response.data.message);
+      console.log(e);
     }
   }
 
