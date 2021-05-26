@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import { useNavigate } from "react-router-dom";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import { useSelector } from "react-redux";
 
 import authService from "../../services/authService";
 
@@ -56,6 +57,9 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState();
+
+  const account = useSelector((state) => state);
+  console.log(account);
 
   async function handleSignIn() {
     //chama a api
