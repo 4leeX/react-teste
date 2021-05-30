@@ -70,9 +70,9 @@ function SignIn() {
       await dispatch(signIn(email, password));
 
       // await authService.singIn(email, password);
-      // navigate("/");
-    } catch (e) {
-      console.log(e);
+      navigate("/");
+    } catch (error) {
+      console.log(error.response.data.message);
     }
   }
 
