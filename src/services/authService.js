@@ -7,7 +7,7 @@ class AuthService {
         .post("/api/home/login", { email, password })
         .then((response) => {
           if (response.data.user) {
-            // this.setUser(response.data.user);
+            this.setToken("JWT");
             resolve(response.data.user);
           } else {
             reject(response.data.user);
@@ -19,20 +19,31 @@ class AuthService {
     });
   };
 
-  setUser = (user) => {
-    localStorage.setItem("user", JSON.stringify(user));
+  signInWithToken = () => {
+    return new Promise((resolve, reject) => {
+      axios
+        .post("/api/home/me") //envio o token pelo header
+        .then((response) => {
+          if (response.data.user) {
+            resolve(response.data.user);
+          } else {
+            reject(response.data.user);
+          }
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
   };
 
-  getUser = () => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      return JSON.parse(user);
-    }
-    return user;
+  setToken = (token) => {
+    localStorage.setItem("accessToken", token);
   };
+
+  getToken = () => localStorage.getItem("accessToken");
 
   isAuthentication = () => {
-    return !!this.getUser();
+    return !!this.getToken();
   };
 }
 
