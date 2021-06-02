@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Avatar } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 
 function Account() {
-  const account = useSelector((state) => state.acount);
+  const account = useSelector((state) => state.account);
 
   return (
     <>
