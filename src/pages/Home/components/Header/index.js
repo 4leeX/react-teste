@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 
+import WritePost from './WritePost';
 import Notifications from './Notification';
 import Account from './Account';
 
@@ -33,9 +33,7 @@ function Header() {
         <img src="/images/logo.png" alt="logo" className={classes.img} />
         <div className={classes.grow} />
         <div className={classes.userSection} />
-        <Button color="primary" variant="contained" className={classes.button}>
-          Novo Post
-        </Button>
+        <WritePost />
         <Box ml={2}>
           <Notifications />
         </Box>
