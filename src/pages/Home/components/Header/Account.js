@@ -1,13 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+
+import { signOut } from '../../../../actions/accountAction';
 
 function Account() {
   const account = useSelector((state) => state.account);
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef();
+  const dispatch = useDispatch();
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -19,6 +22,8 @@ function Account() {
 
   const handleSignOut = () => {
     handleClose();
+
+    dispatch(signOut());
   };
 
   return (

@@ -1,13 +1,13 @@
-import axios from "../utils/axios";
+import axios from '../utils/axios';
 
 class AuthService {
   signIn = (email, password) => {
     return new Promise((resolve, reject) => {
       axios
-        .post("/api/home/login", { email, password })
+        .post('/api/home/login', { email, password })
         .then((response) => {
           if (response.data.user) {
-            this.setToken("JWT");
+            this.setToken('JWT');
             resolve(response.data.user);
           } else {
             reject(response.data.user);
@@ -22,7 +22,7 @@ class AuthService {
   signInWithToken = () => {
     return new Promise((resolve, reject) => {
       axios
-        .post("/api/home/me") //envio o token pelo header
+        .post('/api/home/me') //envio o token pelo header
         .then((response) => {
           if (response.data.user) {
             resolve(response.data.user);
@@ -36,11 +36,17 @@ class AuthService {
     });
   };
 
-  setToken = (token) => {
-    localStorage.setItem("accessToken", token);
+  signOut = () => {
+    this.removeToken();
   };
 
-  getToken = () => localStorage.getItem("accessToken");
+  setToken = (token) => {
+    localStorage.setItem('accessToken', token);
+  };
+
+  getToken = () => localStorage.getItem('accessToken');
+
+  removeToken = () => localStorage.removeItem('accessToken');
 
   isAuthentication = () => {
     return !!this.getToken();
