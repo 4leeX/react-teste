@@ -1,16 +1,16 @@
-import React from "react";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import SvgIcon from "@material-ui/core/SvgIcon";
-import { Bell } from "react-feather";
+import React from 'react';
+import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Box from '@material-ui/core/Box';
 
-import Account from "./Account";
+import Notifications from './Notification';
+import Account from './Account';
 
 const useStyles = makeStyles({
   appBar: {
-    boxShadow: "none",
+    boxShadow: 'none',
   },
   img: {
     maxHeight: 55,
@@ -19,14 +19,8 @@ const useStyles = makeStyles({
     flexGrow: 1,
   },
   userSection: {
-    display: "flex",
-    alignItems: "center",
-  },
-  button: {
-    marginRight: 10,
-  },
-  bell: {
-    marginRight: 10,
+    display: 'flex',
+    alignItems: 'center',
   },
 });
 
@@ -42,10 +36,12 @@ function Header() {
         <Button color="primary" variant="contained" className={classes.button}>
           Novo Post
         </Button>
-        <SvgIcon className={classes.bell}>
-          <Bell />
-        </SvgIcon>
-        <Account />
+        <Box ml={2}>
+          <Notifications />
+        </Box>
+        <Box ml={2}>
+          <Account />
+        </Box>
       </Toolbar>
     </AppBar>
   );
